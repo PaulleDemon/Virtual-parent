@@ -11,3 +11,148 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+/* ---------------- chat mafia ------------- */
+
+.chat-page{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.info{
+  max-width: 200px;
+  max-height: 100%;
+}
+
+.chat-header{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	z-index: 2;
+	width: 100%;
+	display: flex;
+	background-color: var(--chat-header);
+	height: 60px;
+	align-items: center;
+	justify-content: space-between;
+	box-shadow: 0 0 4px #4b779d;
+}
+
+
+
+.chat-body{
+	position: relative;
+	top: 60px;
+	height: calc(100% - 120px);
+	padding: 20px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	list-style: none;
+	width: 100%;
+	justify-self: center;
+	align-self: center;
+	background-color: var(--chat-background);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	background-size: contain;
+}
+
+/* ------------------ chat card --------------------- */
+
+.chat-card{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 10px;
+	padding: 5px;
+	max-width: fit-content;
+	height: fit-content;
+}
+
+.chat-card .message-body{
+	min-height: 10px;
+	max-width: 90%;
+	padding: 10px;
+	width: max-content;
+	border-radius: 5px;
+	white-space: pre-line;
+	overflow-wrap: break-word;
+	word-break:keep-all;
+	word-wrap: break-word;
+	height: max-content;
+	box-shadow: 0 0 10px #4b779d;
+}
+
+.chat-card .user-icon{
+  width: 40px;
+  height: 40px;
+  /* clip-path: circle(50%); */
+background-color: #000000;
+  box-shadow: 0 0 10px #4b779d;
+  margin-top: auto;
+  background-size:     cover;            
+  background-repeat:   no-repeat;
+  background-position: center center;  
+}
+
+.chat-card .chat-media{
+  max-width: 90%;
+  max-height: 600px;
+  padding: 2px;
+  height: auto;
+  width: auto;
+  border-radius: 20px;
+  box-shadow: 0 0 10px #4b779d;
+}
+
+.sender{
+  justify-content: end;
+}
+
+.receiver{
+  background-color: var(--chat-receiver);
+  margin-left: 10px;
+}
+
+.sender{
+  background-color: var(--chat-sender);
+  margin-right: 10px;
+}
+
+.chat-card .username-time{
+  color: #858484;
+  font-size: 14px;
+}
+
+
+/* --------------------------- loading wheel ----------------------------- */
+
+.loading-wheel {
+  border: 8px solid #cfcdcd;
+  border-radius: 50%;
+  border-top: 8px solid #3498db;
+  width: 50px;
+  height: 50px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
