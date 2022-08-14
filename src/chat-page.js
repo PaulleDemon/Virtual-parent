@@ -19,7 +19,11 @@ const ChatPage = () => {
             <div className="chat-body">
 
             </div>
-            <AutoHeightTextarea value={userMessage} onChange={(e) => setUserMessage(e.target.value)}/>
+
+            <div className="message-container">
+                <AutoHeightTextarea value={userMessage} onChange={(e) => setUserMessage(e.target.value)}/>
+                <div className="btn">send</div>
+            </div>
         </div>
     )
 

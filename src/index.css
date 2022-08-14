@@ -1,3 +1,7 @@
+*{
+	box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,7 +9,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 100%;
 }
 
 code {
@@ -15,8 +18,19 @@ code {
 
 .root, .App {
     height: 100vh;
+
+    /* flex-direction: column; */
 }
 
+
+.row{
+	display: flex;
+}
+
+.center{
+	justify-content: center;
+	align-items: center;
+}
 
 /* ---------------- chat mafia ------------- */
 
@@ -26,7 +40,6 @@ code {
   height: 100%;
   width: 100%;
   overflow: hidden;
-  /* background-color: #19adf8; */
 }
 
 .info{
@@ -41,19 +54,17 @@ code {
 	z-index: 2;
 	width: 100%;
 	display: flex;
-	background-color: var(--chat-header);
+	background-color: #fff;
 	height: 60px;
 	align-items: center;
 	justify-content: space-between;
 	box-shadow: 0 0 4px #4b779d;
 }
 
-
-
 .chat-body{
 	position: relative;
 	top: 60px;
-	height: calc(100% - 120px);
+	height: calc(100% - 80px);
 	padding: 20px;
 	overflow-y: auto;
 	overflow-x: hidden;
@@ -64,11 +75,6 @@ code {
 	width: 100%;
 	justify-self: center;
 	align-self: center;
-	background-color: var(--chat-background);
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-position: center;
-	background-size: contain;
 }
 
 /* ------------------ chat card --------------------- */
@@ -97,28 +103,6 @@ code {
 	box-shadow: 0 0 10px #4b779d;
 }
 
-.chat-card .user-icon{
-  width: 40px;
-  height: 40px;
-  /* clip-path: circle(50%); */
-background-color: #000000;
-  box-shadow: 0 0 10px #4b779d;
-  margin-top: auto;
-  background-size:     cover;            
-  background-repeat:   no-repeat;
-  background-position: center center;  
-}
-
-.chat-card .chat-media{
-  max-width: 90%;
-  max-height: 600px;
-  padding: 2px;
-  height: auto;
-  width: auto;
-  border-radius: 20px;
-  box-shadow: 0 0 10px #4b779d;
-}
-
 .sender{
   justify-content: end;
 }
@@ -139,31 +123,60 @@ background-color: #000000;
 }
 
 
-/* ------------- auto resize text box -------------------------- */
-.autoresize-container{
-    display: flex;
-    flex-direction: column;
-    padding: 5px;
+.message-container{
     width: 100%;
-    height: 100%;
-    background-color: #fff;
+    z-index: 2;
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    justify-content: center;
+    align-items: center;
     position: fixed;
     bottom: 0px;
 }
 
+.btn{
+	background-color: #19adf8;
+	border-radius: 10px;
+	padding: 5px;
+	min-width: 70px;
+	text-align: center;
+	margin: 10px;
+}
+
+.btn:hover{
+	background-color: #006ea4;
+	cursor: pointer;
+}
+
+
+/* ------------- auto resize text box -------------------------- */
+.autoresize-container{
+    position: relative;
+    bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    width: 100%;
+}
+
 .autoresize{
+	position: absolute;
+    top: auto;
+    bottom: 0px;
+    left: 40px;
     border: 0px;
+	outline: none;
     border-radius: 5px;
     overflow: auto;
     resize: none;
-    width: 100%;
-    max-width: 100%;
-    height: 100%;
-    padding: 10px;
-    outline: none;
+    width: calc(100% - 50px);
+    min-height: 40px;
+    max-height: 150px;
+    padding: 8px;
+    /* padding-right: 130px; */
+    box-shadow: 0 0 10px #477089;
     font-size: 18px;
-    border: 2px solid #484747;
-
 }
 
 .autoresize:focus{
