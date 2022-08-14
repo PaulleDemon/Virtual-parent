@@ -5,11 +5,16 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.root, .App {
+    height: 100vh;
 }
 
 
@@ -21,6 +26,7 @@ code {
   height: 100%;
   width: 100%;
   overflow: hidden;
+  /* background-color: #19adf8; */
 }
 
 .info{
@@ -133,26 +139,33 @@ background-color: #000000;
 }
 
 
-/* --------------------------- loading wheel ----------------------------- */
-
-.loading-wheel {
-  border: 8px solid #cfcdcd;
-  border-radius: 50%;
-  border-top: 8px solid #3498db;
-  width: 50px;
-  height: 50px;
-  -webkit-animation: spin 2s linear infinite; /* Safari */
-  animation: spin 2s linear infinite;
+/* ------------- auto resize text box -------------------------- */
+.autoresize-container{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    position: fixed;
+    bottom: 0px;
 }
 
-/* Safari */
-@-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
+.autoresize{
+    border: 0px;
+    border-radius: 5px;
+    overflow: auto;
+    resize: none;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    padding: 10px;
+    outline: none;
+    font-size: 18px;
+    border: 2px solid #484747;
+
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+.autoresize:focus{
+    border: 2px solid #19adf8;
 }
-

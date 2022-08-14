@@ -3,7 +3,10 @@ import Chat from "./chat-page"
 
 function App() {
   return (
-    <Chat />
+		<div className="App">
+			<Chat />
+		</div>
+      
   )
 }
 
