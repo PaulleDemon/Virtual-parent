@@ -1,7 +1,7 @@
 import { memo, useState } from "react"
 import { toLocalTime } from "./utils/datetime"
 
-import { TimedMessageModal } from "../modals/info-modal"
+import { TimedMessageModal } from "./info-modal"
 
 
 
@@ -12,19 +12,15 @@ import { TimedMessageModal } from "../modals/info-modal"
  * @param datetime: str - datetime when the message was sent
  */
 
-const ChatCard = memo(({currentUserId=null, props}) => {
+const ChatCard = memo(({message, datetime=new Date(), is_sender=false}) => {
 
-    
-    const {id, message, user, } = props
-    
-    const {id: userid, name, avatar_url} = user
 
     const [timedMessageModal, setTimedMessageModal] = useState("")
     
     
     return ( 
         // the == is used instead of === because one is a string and other is an integer
-        <div className={`chat-card ${currentUserId == userid? "right-end" : "left-end"}`}> 
+        <div className={`chat-card ${is_sender? "right-end" : "left-end"}`}> 
 
 
             {
@@ -38,34 +34,30 @@ const ChatCard = memo(({currentUserId=null, props}) => {
 
             <div className="row center" style={{gap: "5px"}}>
 
-                {currentUserId == userid ?
+                {is_sender ?
 
                     <>  
 
                         
                         { message ?
-                            <div className={`message-body ${currentUserId == userid ? "sender right-end" : "receiver left-end"}`}>
-                                {linkify(message)}  
+                            <div className={`message-body ${is_sender ? "sender right-end" : "receiver left-end"}`}>
+                                {message}  
                             </div>
                             :
                             null
                         } 
 
-                        <Link to={`/loner/${name}/`}>
-                            <img className="user-icon" src={avatar_url} alt="" />
-                        </Link>
+    
                         
                     </>
 
                     :
                     <>
-                        <Link to={`/loner/${name}/`}>
-                            <img className="user-icon" src={avatar_url} alt="" />
-                        </Link>
+                        
                         {
                             message ?
-                            <div className={`message-body ${currentUserId == userid ? "sender right-end" : "receiver left-end"}`}>
-                                {linkify(message)}  
+                            <div className={`message-body ${is_sender ? "sender right-end" : "receiver left-end"}`}>
+                                {message}  
                             </div>
                             :
                             null
@@ -82,10 +74,6 @@ const ChatCard = memo(({currentUserId=null, props}) => {
 
                     <div className="left-end username-time">
                         {toLocalTime(datetime)}
-                    </div>
-                    <div className="margin-10px" />
-                    <div className="right-end username-time">
-                        {name}
                     </div>
 
                 </div>
