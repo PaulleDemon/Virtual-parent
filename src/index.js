@@ -7,7 +7,7 @@ import App from "./App"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 
 
-const dontTryErrors = [400, 401, 404, 403, 417]
+const dontTryErrors = [400, 401, 404, 403, 417, 500]
 
 const queryClientConfig = {
 

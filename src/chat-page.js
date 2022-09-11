@@ -1,13 +1,22 @@
 import { useState } from "react"
-import { useQuery } from "@tanstack/react-query"
+import { useMutation, useQuery } from "@tanstack/react-query"
 
 import AutoHeightTextarea from "./auto-resize-textarea"
 import ChatCard from "./message-card"
+import { sendText } from "./apis/apis"
 
 
 const ChatPage = () => {
 
-    const chatQuery = useQuery(['chat'] )
+    const charMutate = useMutation(sendText, {
+        enabled: false,
+        onSuccess: (data) => {
+            console.log("Data: ", data)
+        },
+        onError: (err) => {
+            console.log("error: ", err.response)
+        } 
+    })
 
     const [messages, setMessages] = useState([
                                             {   
@@ -41,7 +50,9 @@ const ChatPage = () => {
     return (
         <div className="chat-page">
             <div className="chat-header center">
-                Virtual parent VP
+                <div>Virtual parent VP</div>
+            
+                <div className="btn margin-10px right-end">train data</div>
             </div>
 
             <div className="chat-body">
