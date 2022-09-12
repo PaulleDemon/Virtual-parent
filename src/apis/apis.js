@@ -23,9 +23,9 @@ export const getConfig = () => {
 
 export const sendText = (text) => {
 
-    const body = JSON.stringify({text: text})
+    const body = JSON.stringify(text)
 
-    return api.get(`/parent/talk/`, body, getConfig())
+    return api.post(`/parent/talk/`, body, getConfig())
 
 }
 

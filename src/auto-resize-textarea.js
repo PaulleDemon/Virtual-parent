@@ -23,9 +23,9 @@ const AutoHeightTextarea = ({  value, onInfo, onSendOnEnter, ...props }) => {
 
     const handleEnterEvent = (e) => {
 
-        if (e.key === "Enter" && onSendOnEnter && !e.shiftKey && width > 700){
+        if (e.key === "Enter"){
             e.preventDefault()
-            onSendOnEnter()
+            onSendOnEnter(value)
         }
 
     }
