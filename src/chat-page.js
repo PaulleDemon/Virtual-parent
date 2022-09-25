@@ -38,7 +38,7 @@ const ChatPage = () => {
                                             }
                                             ])
 
-    const [userMessage, setUserMessage] = useState("cool")
+    const [userMessage, setUserMessage] = useState("")
 
     useEffect(() => {
 
